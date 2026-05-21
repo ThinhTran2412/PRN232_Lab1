@@ -19,9 +19,12 @@ public class CoursesController : ControllerBase
     private readonly ICourseService _service;
     private readonly IMapper _mapper;
 
-    public CoursesController(ICourseService service, IMapper mapper)
+    private readonly IEnrollmentService _enrollmentService;
+
+    public CoursesController(ICourseService service, IEnrollmentService enrollmentService, IMapper mapper)
     {
         _service = service;
+        _enrollmentService = enrollmentService;
         _mapper  = mapper;
     }
 
@@ -88,5 +91,14 @@ public class CoursesController : ControllerBase
         var deleted = await _service.DeleteAsync(id);
         if (!deleted) return NotFound(ApiResponse<object>.Fail("Course not found"));
         return Ok(ApiResponse<object>.Ok(null!, "Course deleted successfully"));
+    }
+
+    // New endpoint to get enrollments for a specific course
+    [HttpGet("{id:int}/enrollments")]
+    [ProducesResponseType(typeof(ApiResponse<PagedResult<object>>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetEnrollmentsByCourseId(int id, [FromQuery] EnrollmentQueryParams query)
+    {
+        var result = await _enrollmentService.GetByCourseIdAsync(id, query);
+        return Ok(ApiResponse<PagedResult<object>>.Ok(result));
     }
 }
