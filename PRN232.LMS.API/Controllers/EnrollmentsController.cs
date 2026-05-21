@@ -67,6 +67,7 @@ public class EnrollmentsController : ControllerBase
     /// <summary>Update an existing enrollment</summary>
     [HttpPut("{id:int}")]
     [ProducesResponseType(typeof(ApiResponse<EnrollmentResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Update(int id, [FromBody] UpdateEnrollmentRequest request)
     {
         if (!ModelState.IsValid)
@@ -81,6 +82,7 @@ public class EnrollmentsController : ControllerBase
     /// <summary>Delete an enrollment</summary>
     [HttpDelete("{id:int}")]
     [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete(int id)
     {
         var deleted = await _service.DeleteAsync(id);
