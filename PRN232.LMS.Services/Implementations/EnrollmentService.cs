@@ -28,8 +28,14 @@ public class EnrollmentService : IEnrollmentService
     }
 
     public async Task<PagedResult<object>> GetAllAsync(EnrollmentQueryParams query)
+    
+
+    // New method to get enrollments by course id
+    public async Task<PagedResult<object>> GetByCourseIdAsync(int courseId, EnrollmentQueryParams query)
     {
         var source = await _repo.GetQueryableAsync();
+        // Filter by courseId
+        source = source.Where(e => e.CourseId == courseId);
 
         // Expand
         if (!string.IsNullOrWhiteSpace(query.Expand))
@@ -54,6 +60,7 @@ public class EnrollmentService : IEnrollmentService
         return await QueryHelper.PaginateAsync(source, query,
             e => (object)_mapper.Map<EnrollmentBM>(e));
     }
+    
 
     public async Task<EnrollmentBM> CreateAsync(EnrollmentBM bm)
     {

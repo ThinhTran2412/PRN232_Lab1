@@ -8,6 +8,7 @@ public interface IEnrollmentService
 {
     Task<EnrollmentBM?> GetByIdAsync(int id);
     Task<PagedResult<object>> GetAllAsync(EnrollmentQueryParams query);
+    Task<PagedResult<object>> GetByCourseIdAsync(int courseId, EnrollmentQueryParams query);
     Task<EnrollmentBM> CreateAsync(EnrollmentBM bm);
     Task<EnrollmentBM?> UpdateAsync(int id, EnrollmentBM bm);
     Task<bool> DeleteAsync(int id);
