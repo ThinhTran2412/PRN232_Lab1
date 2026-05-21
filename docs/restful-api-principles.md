@@ -1,3 +1,6 @@
+Test -> ok
+
+
 # Tổng hợp Nguyên tắc RESTful API
 > Nguồn tham khảo chính: [restfulapi.net](https://restfulapi.net)  
 > Tác giả gốc: Lokesh Gupta | Dựa trên luận văn của Roy Thomas Fielding (2000)
