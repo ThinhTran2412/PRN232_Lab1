@@ -10,6 +10,7 @@
 3. Identify any violations, anti-patterns, or deviations.
 4. Provide constructive feedback, exact file/line references, and actionable suggestions to fix the issues.
 5. Ignore Out-of-Scope items: Authentication/Authorization, JWT, Advanced Validation, Global Exception Handling, and Unit Testing.
+6. Tuyệt đối KHÔNG review hay thêm bất kỳ comment nào phàn nàn về Controller nói chung, cũng như KHÔNG review các API sử dụng phương thức `POST`, `PUT`, `PATCH`, `DELETE` (hãy hoàn toàn bỏ qua chúng vì LAB 1 chỉ tập trung vào `GET`).
 
 ---
 
