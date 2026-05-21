@@ -49,45 +49,45 @@ public class StudentsController : ControllerBase
     // ── Dưới đây là các endpoint NGOÀI YÊU CẦU LAB1 (LAB chỉ yêu cầu GET) ──────
     // Có thể bỏ comment để dùng khi cần thiết.
 
-    // /// <summary>Create a new student</summary>
-    // [HttpPost]
-    // [ProducesResponseType(typeof(ApiResponse<StudentResponse>), StatusCodes.Status201Created)]
-    // [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status400BadRequest)]
-    // public async Task<IActionResult> Create([FromBody] CreateStudentRequest request)
-    // {
-    //     if (!ModelState.IsValid)
-    //         return BadRequest(ApiResponse<object>.Fail("Invalid request", ModelState));
-    //
-    //     var bm       = _mapper.Map<StudentBM>(request);
-    //     var created  = await _service.CreateAsync(bm);
-    //     var response = _mapper.Map<StudentResponse>(created);
-    //     return CreatedAtAction(nameof(GetById), new { id = response.StudentId },
-    //         ApiResponse<StudentResponse>.Ok(response, "Student created successfully"));
-    // }
+    /// <summary>Create a new student</summary>
+    [HttpPost]
+    [ProducesResponseType(typeof(ApiResponse<StudentResponse>), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Create([FromBody] CreateStudentRequest request)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ApiResponse<object>.Fail("Invalid request", ModelState));
+    
+        var bm       = _mapper.Map<StudentBM>(request);
+        var created  = await _service.CreateAsync(bm);
+        var response = _mapper.Map<StudentResponse>(created);
+        return CreatedAtAction(nameof(GetById), new { id = response.StudentId },
+            ApiResponse<StudentResponse>.Ok(response, "Student created successfully"));
+    }
 
-    // /// <summary>Update an existing student</summary>
-    // [HttpPut("{id:int}")]
-    // [ProducesResponseType(typeof(ApiResponse<StudentResponse>), StatusCodes.Status200OK)]
-    // [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status404NotFound)]
-    // public async Task<IActionResult> Update(int id, [FromBody] UpdateStudentRequest request)
-    // {
-    //     if (!ModelState.IsValid)
-    //         return BadRequest(ApiResponse<object>.Fail("Invalid request", ModelState));
-    //
-    //     var bm      = _mapper.Map<StudentBM>(request);
-    //     var updated = await _service.UpdateAsync(id, bm);
-    //     if (updated == null) return NotFound(ApiResponse<object>.Fail("Student not found"));
-    //     return Ok(ApiResponse<StudentResponse>.Ok(_mapper.Map<StudentResponse>(updated)));
-    // }
+    /// <summary>Update an existing student</summary>
+    [HttpPut("{id:int}")]
+    [ProducesResponseType(typeof(ApiResponse<StudentResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Update(int id, [FromBody] UpdateStudentRequest request)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ApiResponse<object>.Fail("Invalid request", ModelState));
+    
+        var bm      = _mapper.Map<StudentBM>(request);
+        var updated = await _service.UpdateAsync(id, bm);
+        if (updated == null) return NotFound(ApiResponse<object>.Fail("Student not found"));
+        return Ok(ApiResponse<StudentResponse>.Ok(_mapper.Map<StudentResponse>(updated)));
+    }
 
-    // /// <summary>Delete a student</summary>
-    // [HttpDelete("{id:int}")]
-    // [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status200OK)]
-    // [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status404NotFound)]
-    // public async Task<IActionResult> Delete(int id)
-    // {
-    //     var deleted = await _service.DeleteAsync(id);
-    //     if (!deleted) return NotFound(ApiResponse<object>.Fail("Student not found"));
-    //     return Ok(ApiResponse<object>.Ok(null!, "Student deleted successfully"));
-    // }
+    /// <summary>Delete a student</summary>
+    [HttpDelete("{id:int}")]
+    [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var deleted = await _service.DeleteAsync(id);
+        if (!deleted) return NotFound(ApiResponse<object>.Fail("Student not found"));
+        return Ok(ApiResponse<object>.Ok(null!, "Student deleted successfully"));
+    }
 }
