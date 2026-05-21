@@ -67,7 +67,6 @@ public class EnrollmentsController : ControllerBase
     /// <summary>Update an existing enrollment</summary>
     [HttpPut("{id:int}")]
     [ProducesResponseType(typeof(ApiResponse<EnrollmentResponse>), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Update(int id, [FromBody] UpdateEnrollmentRequest request)
     {
         if (!ModelState.IsValid)

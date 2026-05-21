@@ -1,0 +1,31 @@
+title: PRN232 LAB 1 RESTful API Rules
+rule: |
+  Thoroughly review the provided Pull Request (PR) to ensure it strictly adheres to the RESTful API Design Guide for LAB 1. Focus purely on RESTful API implementation, architectural constraints, and standard formatting as defined in the course guidelines.
+  
+  Instructions:
+  1. Analyze the PR code line by line.
+  2. Evaluate the code against the "Evaluation Checklist" and "Core Guidelines" below.
+  3. Identify any violations, anti-patterns, or deviations.
+  4. Provide constructive feedback, exact file/line references, and actionable suggestions to fix the issues.
+  5. Ignore Out-of-Scope items: Authentication/Authorization, JWT, Advanced Validation, Global Exception Handling, and Unit Testing.
+  
+  Core Guidelines to Enforce:
+  1. 3-Tier Architecture & Models: 
+     - API Layer (Controllers): Only receive request, return response, map Models. NO business logic.
+     - Service Layer: Only business logic. NO direct DB access.
+     - Repository Layer: DB access. NO business logic.
+     - Model Usage: API returns Response Model. NEVER return Entity Model from DB directly.
+  2. Resource Naming (URI): Nouns in plural, lowercase, kebab-case. NO verbs (e.g. no /api/getStudents). No trailing slash.
+  3. HTTP Methods & Status Codes: Correct methods (GET, POST, PUT, DELETE). 200 OK, 400 Bad Request, 404 Not Found, 500 Internal Server Error. NEVER return 200 OK for an error.
+  4. Standard Response Format: MUST exactly be `{ "success": boolean, "message": string, "data": object | null, "errors": array | null }`.
+  5. GET Collection: Must support 5 features via Query Params: search, sort (prefix - for descending), page, size, fields (selection), expand (include related data). Must include pagination metadata in data.
+  6. GET by ID: Prevent infinite recursion/circular references. Return 404 if not found.
+  
+  CRITICAL: You MUST leave INLINE COMMENTS on the exact line of code where any of these rules are violated. Do not just summarize the issues in the PR description. For every violation, create an inline suggestion targeting the specific code.
+severity: high
+scope: file
+path: "**/*.cs"
+inheritance:
+  inheritable: true
+exclude: []
+include: []
