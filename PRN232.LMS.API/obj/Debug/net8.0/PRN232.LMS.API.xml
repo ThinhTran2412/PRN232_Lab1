@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PRN232.LMS.API</name>
+    </assembly>
+    <members>
+        <member name="T:PRN232.LMS.API.Controllers.CoursesController">
+            <summary>Manage Courses</summary>
+        </member>
+        <member name="M:PRN232.LMS.API.Controllers.CoursesController.GetAll(PRN232.LMS.Services.QueryParams.CourseQueryParams)">
+            <summary>Get all courses with search, sort, paging, field selection and expand</summary>
+            <remarks>
+            Query params: ?search=&amp;sort=courseName&amp;page=1&amp;size=10&amp;fields=courseId,courseName&amp;expand=semester
+            Sort prefix "-" = descending. Example: ?sort=-courseId
+            </remarks>
+        </member>
+        <member name="M:PRN232.LMS.API.Controllers.CoursesController.GetById(System.Int32)">
+            <summary>Get course by ID</summary>
+        </member>
+        <member name="T:PRN232.LMS.API.Controllers.EnrollmentsController">
+            <summary>Manage Enrollments</summary>
+        </member>
+        <member name="M:PRN232.LMS.API.Controllers.EnrollmentsController.GetAll(PRN232.LMS.Services.QueryParams.EnrollmentQueryParams)">
+            <summary>Get all enrollments with search, sort, paging, field selection and expand (student, course)</summary>
+            <remarks>
+            Query params: ?search=active&amp;sort=-enrollDate&amp;page=1&amp;size=20&amp;fields=enrollmentId,status&amp;expand=student,course
+            Sort prefix "-" = descending. Example: ?sort=-enrollDate
+            </remarks>
+        </member>
+        <member name="M:PRN232.LMS.API.Controllers.EnrollmentsController.GetById(System.Int32)">
+            <summary>Get enrollment by ID</summary>
+        </member>
+        <member name="T:PRN232.LMS.API.Controllers.SemestersController">
+            <summary>Manage Semesters</summary>
+        </member>
+        <member name="M:PRN232.LMS.API.Controllers.SemestersController.GetAll(PRN232.LMS.Services.QueryParams.SemesterQueryParams)">
+            <summary>Get all semesters with search, sort and paging</summary>
+            <remarks>Semester data rarely changes → cached 300s per LAB1 §12</remarks>
+        </member>
+        <member name="M:PRN232.LMS.API.Controllers.SemestersController.GetById(System.Int32)">
+            <summary>Get semester by ID</summary>
+        </member>
+        <member name="T:PRN232.LMS.API.Controllers.StudentsController">
+            <summary>Manage Students</summary>
+        </member>
+        <member name="M:PRN232.LMS.API.Controllers.StudentsController.GetAll(PRN232.LMS.Services.QueryParams.StudentQueryParams)">
+            <summary>Get all students with search, sort, paging, field selection and expand</summary>
+            <remarks>
+            Query params: ?search=nguyen&amp;sort=fullName&amp;page=1&amp;size=10&amp;fields=studentId,fullName,email
+            Sort prefix "-" = descending. Example: ?sort=-dateOfBirth
+            </remarks>
+        </member>
+        <member name="M:PRN232.LMS.API.Controllers.StudentsController.GetById(System.Int32)">
+            <summary>Get student by ID</summary>
+            <param name="id">Student ID</param>
+        </member>
+        <member name="T:PRN232.LMS.API.Controllers.SubjectsController">
+            <summary>Manage Subjects</summary>
+        </member>
+        <member name="M:PRN232.LMS.API.Controllers.SubjectsController.GetAll(PRN232.LMS.Services.QueryParams.SubjectQueryParams)">
+            <summary>Get all subjects with search, sort and paging</summary>
+            <remarks>
+            Query params: ?search=web&amp;sort=subjectName&amp;page=1&amp;size=10&amp;fields=subjectId,subjectCode,subjectName
+            Subject data rarely changes → cached 300s per LAB1 §12
+            </remarks>
+        </member>
+        <member name="M:PRN232.LMS.API.Controllers.SubjectsController.GetById(System.Int32)">
+            <summary>Get subject by ID</summary>
+        </member>
+        <member name="T:PRN232.LMS.API.Helpers.HateoasHelper">
+            <summary>
+            Builds HATEOAS links for API responses.
+            LAB1 – Section 14: HATEOAS
+            </summary>
+        </member>
+        <member name="M:PRN232.LMS.API.Helpers.HateoasHelper.BuildPaginationLinks(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Build self / first / prev / next / last links for a paged collection.
+            </summary>
+        </member>
+        <member name="M:PRN232.LMS.API.Helpers.HateoasHelper.BuildStudentLinks(System.Int32)">
+            <summary>GET /api/v1/students/{id}</summary>
+        </member>
+        <member name="M:PRN232.LMS.API.Helpers.HateoasHelper.BuildCourseLinks(System.Int32,System.Int32)">
+            <summary>GET /api/v1/courses/{id} + semester sub-link</summary>
+        </member>
+        <member name="M:PRN232.LMS.API.Helpers.HateoasHelper.BuildSemesterLinks(System.Int32)">
+            <summary>GET /api/v1/semesters/{id}</summary>
+        </member>
+        <member name="M:PRN232.LMS.API.Helpers.HateoasHelper.BuildSubjectLinks(System.Int32)">
+            <summary>GET /api/v1/subjects/{id}</summary>
+        </member>
+        <member name="M:PRN232.LMS.API.Helpers.HateoasHelper.BuildEnrollmentLinks(System.Int32,System.Int32,System.Int32)">
+            <summary>GET /api/v1/enrollments/{id} + student + course sub-links</summary>
+        </member>
+        <member name="P:PRN232.LMS.API.Models.Common.ApiResponse`1.Links">
+            <summary>HATEOAS links for this resource</summary>
+        </member>
+    </members>
+</doc>
