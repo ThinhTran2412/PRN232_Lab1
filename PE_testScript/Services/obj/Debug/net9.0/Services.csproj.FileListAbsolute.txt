@@ -1,0 +1,15 @@
+F:\PE_PRN\PE_testScript\Services\bin\Debug\net9.0\Services.deps.json
+F:\PE_PRN\PE_testScript\Services\bin\Debug\net9.0\Services.dll
+F:\PE_PRN\PE_testScript\Services\bin\Debug\net9.0\Services.pdb
+F:\PE_PRN\PE_testScript\Services\bin\Debug\net9.0\Repositories.dll
+F:\PE_PRN\PE_testScript\Services\bin\Debug\net9.0\Repositories.pdb
+F:\PE_PRN\PE_testScript\Services\obj\Debug\net9.0\Services.csproj.AssemblyReference.cache
+F:\PE_PRN\PE_testScript\Services\obj\Debug\net9.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+F:\PE_PRN\PE_testScript\Services\obj\Debug\net9.0\Services.AssemblyInfoInputs.cache
+F:\PE_PRN\PE_testScript\Services\obj\Debug\net9.0\Services.AssemblyInfo.cs
+F:\PE_PRN\PE_testScript\Services\obj\Debug\net9.0\Services.csproj.CoreCompileInputs.cache
+F:\PE_PRN\PE_testScript\Services\obj\Debug\net9.0\Services.csproj.Up2Date
+F:\PE_PRN\PE_testScript\Services\obj\Debug\net9.0\Services.dll
+F:\PE_PRN\PE_testScript\Services\obj\Debug\net9.0\refint\Services.dll
+F:\PE_PRN\PE_testScript\Services\obj\Debug\net9.0\Services.pdb
+F:\PE_PRN\PE_testScript\Services\obj\Debug\net9.0\ref\Services.dll

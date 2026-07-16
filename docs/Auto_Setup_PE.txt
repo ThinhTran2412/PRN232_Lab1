@@ -1,0 +1,35 @@
+@echo off
+REM =========================================================================
+REM CONFIGURATION - EDIT THESE 3 LINES BEFORE RUNNING
+REM =========================================================================
+set studentId=SE182004
+set dotnetVer=9.0
+set connString=Data Source=LAPTOP-0S0P0DLI\SQL;Initial Catalog=SU25LeopardDB;User ID=sa;Password=12345;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True
+
+REM =========================================================================
+REM PASTE BLOCK - COPY FROM HERE DOWN TO DEVELOPER COMMAND PROMPT (CMD)
+REM =========================================================================
+set slnName=PRN231_SU25_%studentId%
+set apiName=%slnName%.api
+set repoName=Repositories
+set serviceName=Services
+dotnet new sln -n %slnName%
+dotnet new classlib -n %repoName%
+dotnet new classlib -n %serviceName%
+dotnet new webapi -n %apiName%
+dotnet sln %slnName%.sln add %repoName%/%repoName%.csproj
+dotnet sln %slnName%.sln add %serviceName%/%serviceName%.csproj
+dotnet sln %slnName%.sln add %apiName%/%apiName%.csproj
+dotnet add %serviceName%/%serviceName%.csproj reference %repoName%/%repoName%.csproj
+dotnet add %apiName%/%apiName%.csproj reference %repoName%/%repoName%.csproj
+dotnet add %apiName%/%apiName%.csproj reference %serviceName%/%serviceName%.csproj
+cd %repoName%
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version %dotnetVer%.*
+dotnet add package Microsoft.EntityFrameworkCore.Tools --version %dotnetVer%.*
+dotnet add package Microsoft.EntityFrameworkCore.Design --version %dotnetVer%.*
+dotnet add ../%apiName%/%apiName%.csproj package Microsoft.EntityFrameworkCore.Design --version %dotnetVer%.*
+dotnet build
+dotnet ef dbcontext scaffold "%connString%" Microsoft.EntityFrameworkCore.SqlServer -o Models --context SU25LeopardDBContext --startup-project ../%apiName%
+powershell -Command "$file = Get-ChildItem -Path 'Models' -Filter '*Context.cs' | Select-Object -First 1; if ($file) { (Get-Content $file.FullName -Raw) -replace '(?s)protected override void OnConfiguring.*?=>.*?;', '// OnConfiguring removed' | Set-Content $file.FullName }"
+cd ..
+echo >>> HOAN TAT AUTO SETUP PE! <<<

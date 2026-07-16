@@ -1,0 +1,14 @@
+F:\PE_PRN\PE_testScript\Repositories\bin\Debug\net9.0\Repositories.deps.json
+F:\PE_PRN\PE_testScript\Repositories\bin\Debug\net9.0\Repositories.runtimeconfig.json
+F:\PE_PRN\PE_testScript\Repositories\bin\Debug\net9.0\Repositories.dll
+F:\PE_PRN\PE_testScript\Repositories\bin\Debug\net9.0\Repositories.pdb
+F:\PE_PRN\PE_testScript\Repositories\obj\Debug\net9.0\Repositories.csproj.AssemblyReference.cache
+F:\PE_PRN\PE_testScript\Repositories\obj\Debug\net9.0\Repositories.GeneratedMSBuildEditorConfig.editorconfig
+F:\PE_PRN\PE_testScript\Repositories\obj\Debug\net9.0\Repositories.AssemblyInfoInputs.cache
+F:\PE_PRN\PE_testScript\Repositories\obj\Debug\net9.0\Repositories.AssemblyInfo.cs
+F:\PE_PRN\PE_testScript\Repositories\obj\Debug\net9.0\Repositories.csproj.CoreCompileInputs.cache
+F:\PE_PRN\PE_testScript\Repositories\obj\Debug\net9.0\Repositories.dll
+F:\PE_PRN\PE_testScript\Repositories\obj\Debug\net9.0\refint\Repositories.dll
+F:\PE_PRN\PE_testScript\Repositories\obj\Debug\net9.0\Repositories.pdb
+F:\PE_PRN\PE_testScript\Repositories\obj\Debug\net9.0\Repositories.genruntimeconfig.cache
+F:\PE_PRN\PE_testScript\Repositories\obj\Debug\net9.0\ref\Repositories.dll
